@@ -30,11 +30,23 @@ set.seed(94357843) # for reproducibility
 library(tidyverse)
 ```
 
+    ## Warning: package 'ggplot2' was built under R version 4.3.2
+
+    ## Warning: package 'tidyr' was built under R version 4.3.2
+
+    ## Warning: package 'readr' was built under R version 4.3.2
+
+    ## Warning: package 'dplyr' was built under R version 4.3.2
+
+    ## Warning: package 'stringr' was built under R version 4.3.2
+
+    ## Warning: package 'lubridate' was built under R version 4.3.2
+
     ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
     ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
     ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-    ## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-    ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+    ## ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+    ## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
     ## ✔ purrr     1.0.2     
     ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
     ## ✖ dplyr::filter() masks stats::filter()
@@ -53,8 +65,15 @@ install them with `install.packages("testthat")` or
 
 ``` r
 suppressPackageStartupMessages(library(testthat))
+```
+
+    ## Warning: package 'testthat' was built under R version 4.3.3
+
+``` r
 suppressPackageStartupMessages(library(scales))
 ```
+
+    ## Warning: package 'scales' was built under R version 4.3.2
 
 ## New functions used
 
@@ -286,7 +305,7 @@ but the function will return `Test passed`.
 ``` r
 test_that("Probability Calculation with PM:", {
           local_edition(2)
-          expect_known_hash(round(prob,10), "21f25e4c0c29f25e1cbd1a4da5a4f629")
+          expect_known_hash(round(prob,10), "e674f477275ebe3bc0f0ee9228194518")
 })
 ```
 
@@ -294,7 +313,7 @@ test_that("Probability Calculation with PM:", {
     ## Error in `round(prob, 10)`: non-numeric argument to mathematical function
     ## Backtrace:
     ##     ▆
-    ##  1. └─testthat::expect_known_hash(round(prob, 10), "21f25e4c0c29f25e1cbd1a4da5a4f629")
+    ##  1. └─testthat::expect_known_hash(round(prob, 10), "e674f477275ebe3bc0f0ee9228194518")
     ##  2.   └─testthat::quasi_label(enquo(object), arg = "object")
     ##  3.     └─rlang::eval_bare(expr, quo_get_env(quo))
 
@@ -379,12 +398,17 @@ but the function will return `Test passed`.
 ``` r
 test_that("Probability Calculation with CDF", {
           local_edition(2)
-          expect_known_hash(prob, "78dcd0f9535233065cb718a9938312dd")
+          expect_known_hash(round(prob,10), "21f25e4c0c29f25e1cbd1a4da5a4f629")
 })
 ```
 
-    ## ── Failure: Probability Calculation with CDF ───────────────────────────────────
-    ## Value hashes to 917adccf7b1791212ddff570523f2736, not 78dcd0f9535233065cb718a9938312dd
+    ## ── Error: Probability Calculation with CDF ─────────────────────────────────────
+    ## Error in `round(prob, 10)`: non-numeric argument to mathematical function
+    ## Backtrace:
+    ##     ▆
+    ##  1. └─testthat::expect_known_hash(round(prob, 10), "21f25e4c0c29f25e1cbd1a4da5a4f629")
+    ##  2.   └─testthat::quasi_label(enquo(object), arg = "object")
+    ##  3.     └─rlang::eval_bare(expr, quo_get_env(quo))
 
     ## Error:
     ## ! Test failed
